@@ -1,0 +1,16 @@
+{
+    "name": "Pathfinder Result Calculator",
+    "short_name": "Calculator",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000",
+    "description": "A web application to calculate Pathfinder results.",
+    "icons": [
+      {
+        "src": "redDragonicon.webp",
+        "sizes": "400x400",
+        "type": "image/webp"
+      }
+    ]
+  }
