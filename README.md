@@ -24,7 +24,7 @@ Ensure you have the following installed on your machine:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/pathfinder-calculator.git
+    git clone https://github.com/dcruas/pathfinder-calculator.git
     cd pathfinder-calculator
     ```
 

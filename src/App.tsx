@@ -29,7 +29,6 @@ const App: React.FC = () => {
 
   const handleApiCall = async () => {
     try {
-
       const skillCheckRequest: SkillCheckRequest = {
         modifier : Number(modifier),  
         dc : Number(dc)
@@ -67,16 +66,17 @@ const App: React.FC = () => {
             label="Modifier"
             type="text"
             value={modifier}
+            error={modifier === ""}
+            helperText={modifier === "" ? 'Modifier must be filled' : ' '}
             onChange={(e) => {
               const value = e.target.value;
-              if (/^-?\d*$/.test(value)) {
+              if (/^-?\d*$/.test(value) || value === "-" || value === "") {  
                 setModifier(value);
               }
             }}
             onBlur={() => {
-              const finalValue = modifier === "-" || modifier === "" ? 0 : parseInt(modifier.toString(), 10);
-              console.log(finalValue);
-              setModifier(finalValue);
+             const finalValue = modifier === "-" || modifier === "" ? modifier : parseInt(modifier.toString(), 10);
+             setModifier(finalValue);
             }}
             
           />
@@ -84,19 +84,20 @@ const App: React.FC = () => {
             label="DC"
             type="text"
             value={dc}
+            error={dc === ""}
+            helperText={dc === "" ? 'DC must be filled!' : ' '}
             onChange={(e) => {
               const value = e.target.value;
-              if (/^-?\d*$/.test(value)) {
+              if (/^-?\d*$/.test(value) || value === "-" || value === "") {
                 setDc(value);
               }
             }}
             onBlur={() => {
-              const finalValue = modifier === "-" || modifier === "" ? 0 : parseInt(modifier.toString(), 10);
-              console.log(finalValue);
-              setModifier(finalValue);
+              const finalValue = dc === "-" || dc === "" ? dc : parseInt(dc.toString(), 10);
+              setDc(finalValue);
             }}
           />
-          <Button variant="contained" onClick={handleApiCall}>
+          <Button variant="contained" onClick={handleApiCall} disabled={modifier === "" || dc === ""}>
             Generate Results
           </Button>
         </Box>
