@@ -77,39 +77,39 @@ const App: React.FC = () => {
         <Box id="calculatorForm"
           sx={calculatorBoxStyles}
         >
-          <TextField
+           <TextField
             label="Modifier"
             type="text"
+            inputProps={{ 
+              inputMode: 'numeric', 
+              pattern: '^-?\\d{1,3}$'
+            }}
             value={modifier}
             error={modifier === ""}
-            helperText={modifier === "" ? 'Modifier must be filled' : ' '}
+            helperText={modifier === "" ? 'Modifier must be filled!' : ' '}
             onChange={(e) => {
-              const value = e.target.value;
-              if (/^-?\d*$/.test(value) || value === "-" || value === "") {  
-                setModifier(value);
+              const input = e.target.value;
+              if (/^-?\d{0,3}$/.test(input) && (input.length <= 4)) {
+                setModifier(input);
               }
             }}
-            onBlur={() => {
-             const finalValue = modifier === "-" || modifier === "" ? modifier : parseInt(modifier.toString(), 10);
-             setModifier(finalValue);
-            }}
-            
           />
+
           <TextField
             label="DC"
             type="text"
+            inputProps={{ 
+              inputMode: 'numeric', 
+              pattern: '^-?\\d{1,3}$'
+            }}
             value={dc}
             error={dc === ""}
             helperText={dc === "" ? 'DC must be filled!' : ' '}
             onChange={(e) => {
-              const value = e.target.value;
-              if (/^-?\d*$/.test(value) || value === "-" || value === "") {
-                setDc(value);
+              const input = e.target.value;
+              if (/^-?\d{0,3}$/.test(input) && (input.length <= 4)) {
+                setDc(input);
               }
-            }}
-            onBlur={() => {
-              const finalValue = dc === "-" || dc === "" ? dc : parseInt(dc.toString(), 10);
-              setDc(finalValue);
             }}
           />
           <Button variant="contained" onClick={handleApiCall} disabled={modifier === "" || dc === ""}>
