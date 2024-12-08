@@ -27,7 +27,22 @@ const App: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [openErrorNotification, setErrorNotification] = useState(false);
 
+  const isValidNumbers = () => {
+    if ((Number(modifier) < -100 || Number(modifier) > 100) || (Number(dc) < -100 || Number(dc) > 100)) {
+      setError("Invalid value, only values between -100 and 100 are allowed");
+      setErrorNotification(true);
+      return false;
+    }
+
+    return true;
+  };
+  
   const handleApiCall = async () => {
+
+    if (!await isValidNumbers()) {
+      return;
+    } 
+
     try {
       const skillCheckRequest: SkillCheckRequest = {
         modifier : Number(modifier),  
