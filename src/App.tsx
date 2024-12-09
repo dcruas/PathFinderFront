@@ -28,8 +28,8 @@ const App: React.FC = () => {
   const [openErrorNotification, setErrorNotification] = useState(false);
 
   const isValidNumbers = () => {
-    if ((Number(modifier) < -100 || Number(modifier) > 100) || (Number(dc) < -100 || Number(dc) > 100)) {
-      setError("Invalid value, only values between -100 and 100 are allowed");
+    if ((Number(modifier) < -999 || Number(modifier) > 999) || (Number(dc) < -999 || Number(dc) > 999)) {
+      setError("Invalid value, only values between -999 and 999 are allowed");
       setErrorNotification(true);
       return false;
     }
